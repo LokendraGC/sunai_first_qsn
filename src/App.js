@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { createContext } from "react";
+import List from "./components/List";
+import Order from "./components/Order";
+
+
+export const AppContext  = createContext();
 
 function App() {
+  const [order,setOrder] = [0];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AppContext.Provider value={{order,setOrder}}>
+     <List/>
+     <Order/>
+      </AppContext.Provider>
     </div>
   );
 }
